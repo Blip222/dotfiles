@@ -40,7 +40,7 @@ local fileManager = "dolphin"
 --
 hl.on("hyprland.start", function()
 	--   hl.exec_cmd(terminal)
-	--   hl.exec_cmd("nm-applet")
+	hl.exec_cmd("nm-applet --indicator")
 	--   hl.exec_cmd("waybar & hyprpaper & firefox")
 	hl.exec_cmd("waybar")
 	hl.exec_cmd("awww-daemon")
@@ -92,7 +92,7 @@ hl.config({
 		},
 
 		-- Set to true to enable resizing windows by clicking and dragging on borders and gaps
-		resize_on_border = false,
+		resize_on_border = true,
 
 		-- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
 		allow_tearing = false,
@@ -258,10 +258,10 @@ hl.bind(
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("~/.config/rofi/launchers/type-2/launcher.sh"))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("~/.config/rofi/launchers/type-2/launcher.sh|| pkill rofi"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
-
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("bash ~/.config/waybar/scripts/launch.sh"))
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
