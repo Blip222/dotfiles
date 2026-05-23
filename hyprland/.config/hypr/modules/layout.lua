@@ -1,9 +1,9 @@
 -- See https://wiki.hypr.land/Configuring/L{
 hl.config({
 
-    general = {
-        layout = dwindle
-    },
+	general = {
+		layout = dwindle,
+	},
 
 	dwindle = {
 		preserve_split = true, -- You probably want this

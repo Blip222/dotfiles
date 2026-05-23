@@ -77,7 +77,7 @@ hl.bind("SHIFT + F6", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked
 hl.bind("SHIFT + F5", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true }) --XF86MonBrightnessDown
 
 -- Requires playerctl
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+hl.bind("End + D", hl.dsp.exec_cmd("playerctl next"), { locked = true }) --XF86AudioNext
+hl.bind("End + space", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true }) --XF86AudioPause
+--hl.bind("End + ", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })--XF86AudioPlay
+hl.bind("End + A", hl.dsp.exec_cmd("playerctl previous"), { locked = true }) --XF86AudioPrev
