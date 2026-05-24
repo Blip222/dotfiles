@@ -4,6 +4,11 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+--new colors
+  vim.keymap.set("n", "<leader>bg", function()
+    require("colors.wallpaper").toggle_transparency()
+end, { desc = "Toggle transparency" })
+
 -- For conciseness
 local opts = { noremap = true, silent = true }
 

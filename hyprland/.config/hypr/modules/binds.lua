@@ -81,3 +81,9 @@ hl.bind("End + D", hl.dsp.exec_cmd("playerctl next"), { locked = true }) --XF86A
 hl.bind("End + space", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true }) --XF86AudioPause
 --hl.bind("End + ", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })--XF86AudioPlay
 hl.bind("End + A", hl.dsp.exec_cmd("playerctl previous"), { locked = true }) --XF86AudioPrev
+
+----------------
+--Screen Shots--
+----------------
+
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m output"))

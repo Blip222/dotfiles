@@ -18,7 +18,11 @@ require('lazy').setup {
     -- Move your plugin requires here
     require 'plugins.NeoTree',
     require 'plugins.treesitter',
-    require 'plugins.Colortheme',
+
+    require('colors').setup(),
+
+    --require 'plugins.Colortheme',
+
     require 'plugins.bufferline',
     require 'plugins.lualine',
     require 'plugins.telescope',
