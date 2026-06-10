@@ -7,6 +7,7 @@
 
 -- You can (and should!!) split this configuration into multiple files
 -- Create your files separately and then require them like this:
+require("modules.layout")
 require("modules.monitors")
 require("modules.autostart")
 require("modules.binds")
@@ -14,5 +15,5 @@ require("modules.decorations")
 require("modules.misc")
 require("modules.input")
 require("modules.env")
-require("modules.layout")
 require("modules.windowrules")
+--require("modules.plugins")
