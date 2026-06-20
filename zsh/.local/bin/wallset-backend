@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+    echo"usage: $0 <path_to_image>"
+    exit 1
+fi
+
+IMAGE="$1"
+
+notify-send "Changing Theme"
+
+awww img "$IMAGE" --transition-type="center" --transition-step=1 --transition-fps="60"
