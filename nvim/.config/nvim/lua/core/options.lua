@@ -41,7 +41,20 @@ vim.opt.shortmess:append 'c' -- don't give |ins-completion-menu| messages
 vim.opt.iskeyword:append '-' -- hyphenated words recognized by searches
 vim.opt.formatoptions:remove { 'c', 'r', 'o' } -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
 vim.opt.runtimepath:remove '/usr/share/vim/vimfiles' -- separate vim plugins from neovim in case vim still in use
-
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.wrap = false
+vim.opt.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.clipboard = "unnamedplus"
+vim.opt.scrolloff = 999
+vim.opt.virtualedit = "block"
+vim.opt.inccommand = "split"
+vim.opt.ignorecase = true
+vim.opt.termguicolors = true
 
 
 

@@ -19,9 +19,9 @@ require('lazy').setup {
     require 'plugins.NeoTree',
     require 'plugins.treesitter',
 
-    require('colors').setup(),
+    --require('colors').setup(),
 
-    --require 'plugins.Colortheme',
+    require 'plugins.Colortheme',
 
     require 'plugins.bufferline',
     require 'plugins.lualine',
