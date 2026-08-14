@@ -142,3 +142,38 @@ end)
 hl.bind("SUPER + SHIFT + down", function()
 	hl.dispatch("movewindow", "d")
 end)
+
+----------------
+---quickshell---
+----------------
+hl.bind("SUPER + CTRL + Q", hl.dsp.submap("quickshellSubMap"))
+
+hl.define_submap("quickshellSubMap", function()
+	hl.bind("SUPER + N", function()
+		hl.exec_cmd("qs ipc call notifications toggle")
+	end)
+
+	hl.bind("SUPER + O", function()
+		hl.exec_cmd("qs ipc call menu toggle")
+	end)
+
+	hl.bind("SUPER + left", function()
+		hl.exec_cmd("qs ipc call menu left")
+	end)
+
+	hl.bind("SUPER + right", function()
+		hl.exec_cmd("qs ipc call menu right")
+	end)
+
+	hl.bind("SUPER + I", function()
+		hl.exec_cmd("qs ipc call menu toggleImage")
+	end)
+
+	hl.bind("SUPER + return", function()
+		hl.exec_cmd("qs ipc call menu startBackground")
+		hl.exec_cmd("qs ipc call menu toggle")
+		hl.dsp.submap("reset")
+	end)
+
+	hl.bind("SUPER + CTRL + Q", hl.dsp.submap("reset"))
+end)
