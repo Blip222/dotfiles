@@ -5,6 +5,8 @@ import QtQuick
 import QtQuick.Effects
 import Quickshell
 
+import "../config.js" as Config
+
 ShellRoot {
 
     PanelWindow {
@@ -23,7 +25,7 @@ ShellRoot {
         Rectangle {
             anchors.fill: parent
             // anchors.topMargin:  //Properties.marginCover
-            color:"#000000"        //Theme.borderColor
+            color:Config.bar.backGround        //Theme.borderColor
 
             layer.enabled: true
             layer.effect: MultiEffect {
@@ -43,11 +45,11 @@ ShellRoot {
 
             Rectangle {
                 anchors.fill:         parent
-                anchors.topMargin:    0//Properties.topOffset
+                anchors.topMargin:    5//Properties.topOffset
                 anchors.leftMargin:   5//Properties.borderThickness
                 anchors.rightMargin:  5//Properties.borderThickness
                 anchors.bottomMargin: 5//Properties.borderThickness
-                radius:               5//Properties.cornerRadius
+                radius:               10//Properties.cornerRadius
             }
         }
     }

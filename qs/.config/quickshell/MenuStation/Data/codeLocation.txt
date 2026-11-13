@@ -1,0 +1,7 @@
+~/.config/hypr
+~/.config/quickshell
+~/.config/nvim
+~/Projects/website
+~/Projects/handMadeHero
+~/Projects/CPrograms
+/home/blip/.local/bin

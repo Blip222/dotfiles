@@ -2,11 +2,13 @@ import QtQuick
 import Quickshell
 import Quickshell.Services.Pipewire
 
+import "../config.js" as Config
+
 Rectangle {
     id: root
     height: child.implicitHeight + 6
     width: child.implicitWidth + 30
-    color: '#1a1d22'
+    color: Config.colors.fg
     radius: 10
 
     property var sink: Pipewire.defaultAudioSink
@@ -34,9 +36,9 @@ Rectangle {
         Text {
             // Displays mute state or standard speaker icon
             text: root.icon
-            color: '#ffa200'
+            color: Config.audio.icon
             font{
-                family:"JetBrainsMono Nerd Font Propo"
+                family: Config.bar.fontFamily
                 pixelSize:12
             }
         }
@@ -47,9 +49,9 @@ Rectangle {
                 if (root.muted) return "Muted"
                 return root.vol + "%"
                 }
-            color: root.muted ? "#FF5048" :"#ffa200"
+            color: root.muted ? Config.audio.muted : Config.audio.text
             font {
-                family:"JetBrainsMono Nerd Font Propo"
+                family: Config.bar.fontFamily
                 weight: 500
                 }
         }

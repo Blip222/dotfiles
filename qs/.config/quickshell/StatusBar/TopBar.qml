@@ -3,6 +3,8 @@ import Quickshell
 import QtQuick
 import QtQuick.Layouts
 
+import "../config.js" as Config
+
 Scope {
   Variants {
     model: Quickshell.screens
@@ -16,8 +18,8 @@ Scope {
         left: true
         right: true
       }
-      color: "#000000"
-      implicitHeight: 25
+      color: Config.bar.backGround
+      implicitHeight: 30
       
       RowLayout {
         anchors.fill: parent

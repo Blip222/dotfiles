@@ -28,7 +28,7 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("~/.config/rofi/launchers/type-2/launcher.sh || pkill rofi"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("bash ~/.config/waybar/scripts/launch.sh"))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("reload"))
 
 -- Arrow keys focus
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
@@ -49,7 +49,7 @@ hl.bind(mainMod .. " + ALT + Down", hl.dsp.window.move({ direction = "down" }))
 -------MENU's--------
 ---------------------
 
-hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("bash ~/.config/scripts/quickScripts.sh"))
+--hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("bash ~/.config/scripts/quickScripts.sh"))
 
 hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("zsh ~/.local/bin/wallset"))
 
@@ -142,10 +142,83 @@ end)
 hl.bind("SUPER + SHIFT + down", function()
 	hl.dispatch("movewindow", "d")
 end)
+----------------
+---AppLauncher--
+----------------
+hl.bind("SUPER + SHIFT + D", function()
+	hl.exec_cmd("qs ipc call apps startApps")
+	hl.exec_cmd("qs ipc call apps toggle")
+	hl.dispatch(hl.dsp.submap("AppLauncherSubMap"))
+end)
 
+hl.define_submap("AppLauncherSubMap", function()
+	--AppLauncher--
+	hl.bind("SUPER + return", function()
+		hl.exec_cmd("qs ipc call apps select")
+		hl.exec_cmd("qs ipc call apps toggle")
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+
+	hl.bind("SUPER + up", function()
+		hl.exec_cmd("qs ipc call apps up")
+	end)
+
+	hl.bind("SUPER + down", function()
+		hl.exec_cmd("qs ipc call apps down")
+	end)
+
+	hl.bind("SUPER + left", function()
+		hl.exec_cmd("qs ipc call apps left")
+	end)
+
+	hl.bind("SUPER + right", function()
+		hl.exec_cmd("qs ipc call apps right")
+	end)
+
+	hl.bind("SUPER + SHIFT + D", function()
+		hl.exec_cmd("qs ipc call apps toggle")
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+end)
+
+----------------
+----CodeMenu----
+----------------
+hl.bind("SUPER + SHIFT + Q", function()
+	hl.exec_cmd("qs ipc call codeMenu toggle")
+	hl.dispatch(hl.dsp.submap("codeMenuSubMap"))
+end)
+
+hl.define_submap("codeMenuSubMap", function()
+	--codeSwitcher
+
+	hl.bind("SUPER + C", function()
+		hl.exec_cmd("qs ipc call codeMenu toggle")
+	end)
+
+	hl.bind("SUPER + return", function()
+		hl.exec_cmd("qs ipc call codeMenu select")
+		hl.exec_cmd("qs ipc call codeMenu toggle")
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+
+	hl.bind("SUPER + up", function()
+		hl.exec_cmd("qs ipc call codeMenu up")
+	end)
+
+	hl.bind("SUPER + down", function()
+		hl.exec_cmd("qs ipc call codeMenu down")
+	end)
+
+	hl.bind("SUPER + SHIFT + Q", function()
+		hl.exec_cmd("qs ipc call codeMenu toggle")
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+end)
 ----------------
 ---quickshell---
 ----------------
+
 hl.bind("SUPER + CTRL + Q", hl.dsp.submap("quickshellSubMap"))
 
 hl.define_submap("quickshellSubMap", function()
@@ -154,25 +227,25 @@ hl.define_submap("quickshellSubMap", function()
 	end)
 
 	hl.bind("SUPER + O", function()
-		hl.exec_cmd("qs ipc call menu toggle")
+		hl.exec_cmd("qs ipc call photoMenu toggle")
 	end)
 
 	hl.bind("SUPER + left", function()
-		hl.exec_cmd("qs ipc call menu left")
+		hl.exec_cmd("qs ipc call photoMenu left")
 	end)
 
 	hl.bind("SUPER + right", function()
-		hl.exec_cmd("qs ipc call menu right")
+		hl.exec_cmd("qs ipc call photoMenu right")
 	end)
 
 	hl.bind("SUPER + I", function()
-		hl.exec_cmd("qs ipc call menu toggleImage")
+		hl.exec_cmd("qs ipc call photoMenu toggleImage")
 	end)
 
 	hl.bind("SUPER + return", function()
-		hl.exec_cmd("qs ipc call menu startBackground")
-		hl.exec_cmd("qs ipc call menu toggle")
-		hl.dsp.submap("reset")
+		hl.exec_cmd("qs ipc call photoMenu select")
+		hl.exec_cmd("qs ipc call photoMenu toggle")
+		hl.dispatch(hl.dsp.submap("reset"))
 	end)
 
 	hl.bind("SUPER + CTRL + Q", hl.dsp.submap("reset"))

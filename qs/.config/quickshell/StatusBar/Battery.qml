@@ -2,11 +2,13 @@ import QtQuick
 import Quickshell
 import Quickshell.Services.UPower
 
+import "../config.js" as Config
+
 Rectangle {
     id: root
     height: child.implicitHeight + 7
     width: child.implicitWidth + 30
-    color: "#1a1d22"
+    color: Config.colors.fg
     radius: 10
 
     // Fix: Explicitly bind the active display device locally to listen to property updates
@@ -29,18 +31,19 @@ Rectangle {
         Text {
             // Evaluates instantly because it listens directly to the local activeBattery property
             text: root.icon
-            color: root.charging ? "#7ad9a8" : root.level <=15 ? "#FF5048" : root.level <= 30 ? "#ffa478" : "#7ad9a8" 
+            color: root.charging ? "#7ad9a8" : root.level <=15 ? Config.battery.iconLow : root.level <= 30 ? Config.battery.iconMid : Config.battery.iconOk 
             font{
-                family: "JetBrainsMono Nerd Font Propo"
+                family: Config.bar.fontFamily
                 // pixelSize: 14
             }
         }
         Text{
             text: root.level + "%"
-            color: "#F5e2c5"
+            color: Config.battery.text
 
             font{
-                family: "JetBrainsMono Nerd Font Propo"
+                family: Config.bar.fontFamily
+                weight: 500
             }
         }
     }

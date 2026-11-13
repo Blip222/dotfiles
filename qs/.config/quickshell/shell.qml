@@ -4,6 +4,7 @@ import qs.StatusBar
 import qs.OutsideEdge
 import qs.NotificationStation
 import qs.MenuStation
+import qs.Grid
 
 Scope {
   Notifications{}
@@ -13,6 +14,9 @@ Scope {
   Battery{}
   Audio{}
   WiFi{}
-  Menu{}
+  PhotoMenu{}
+  CodeMenu{}
+  AppMenu{}
   SubMaps{}
-}
+  Grid{}
+} 

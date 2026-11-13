@@ -1,0 +1,7 @@
+Hyprland
+quickshell
+nvim
+website
+HandMadeHero
+C
+bin

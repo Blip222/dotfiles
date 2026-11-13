@@ -4,20 +4,20 @@ import Quickshell.Hyprland
 import Quickshell.Wayland
 import Quickshell
 
+import "../config.js" as Config
+
 RowLayout{
-  // anchors.fill: parent
     anchors.margins: 8 
     spacing: 0
 
     Repeater {
-        // spacing: 0
         model: 10
         id:workspaceIcons
         Rectangle{
-        color: "black"//'#212121'
+        color: Config.workSpaces.backGround
         width: childText.implicitWidth +11
         height: childText.implicitHeight+4
-        border.color: '#5900ffff'
+        border.color:  Config.workSpaces.border //"#5900ffff"
         border.width: 1
         // radius: 15
         
@@ -30,15 +30,15 @@ RowLayout{
                 
                 text: index + 1
                 //00FFA0
-                color: isActive ? '#00ffff' : (ws ? "#7f0aff" : "#abb2bf")
+                color: isActive ? Config.workSpaces.active : (ws ? Config.workSpaces.something : Config.workSpaces.nonActive)
                 font { pixelSize: 14; 
                         bold: true;
-                        family:"JetBrainsMono Nerd Font Propo" }
+                        family: Config.bar.fontFamily}
             }
             Rectangle {
                 width: 18
                 height: 3
-                color: parent.isActive ? "#00ffff" : "transparent"
+                color: parent.isActive ? Config.workSpaces.active : "transparent"
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.bottom: parent.bottom
                 }

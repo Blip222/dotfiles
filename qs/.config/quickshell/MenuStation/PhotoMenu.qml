@@ -14,6 +14,7 @@ Scope {
     property var menuList: []
     property var selected: 2
     property string selectedImage: ""
+    property string selectedWord: ""
 
     function visibilityCheck(indexNumber): bool { 
     return root.visibility && 
@@ -45,10 +46,20 @@ Scope {
         }
     }
 
+    Process {
+        id: printSelected
+        running: false
+        command: ["/bin/bash", "-c", "echo " + selecteedWord]
+        stdout: StdioCollector {
+            onStreamFinished: {
+                running = false
+            }
+        }
+    }
 
 
     IpcHandler {
-        target: "menu"
+        target: "photoMenu"
 
         // General visibility controls
         function toggle(): void { root.visibility = !root.visibility }
@@ -86,9 +97,15 @@ Scope {
             }
         }
 
-        function startBackground(): void{
-            selectedImage = "/home/blip/wallpaper/" + menuList[root.selected]
-            setBackground.running = true
+        function select(): void{
+            if(root.image){
+                selectedImage = "/home/blip/wallpaper/" + menuList[root.selected]
+                setBackground.running = true
+            }
+            else(
+                root.selectedWord = menuList[root.selected],
+                printSelected.running = true
+            )
         }
     }
 
@@ -101,7 +118,7 @@ Scope {
         implicitHeight: 380
         visible: root.visibility
         exclusionMode: ExclusionMode.Ignore
-        color: "black"
+        color: Config.photoMenu.backGround
 
         RowLayout {
             anchors.fill: parent
@@ -117,7 +134,8 @@ Scope {
                     color: Config.colors.bg
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    border.color: index === root.selected ? "blue" : "transparent"
+                    border.color: index === root.selected ? Config.photoMenu.boarderColor : "transparent"
+                    border.width: 10
 
                     // transform: Shear {
                     //     xFactor: -0.2
@@ -129,14 +147,22 @@ Scope {
                         anchors.fill: parent
                         fillMode: Image.PreserveAspectCrop
                         
+                        Rectangle{
+                            anchors.fill: parent
+                            color:"transparent"
+                            border.color: index === root.selected ? Config.photoMenu.boarderColor : "transparent" 
+                            border.width: 3    
+                        }
+                        
+                        
                     }
 
                     Text {
                         visible: !root.image
                         anchors.centerIn: parent
                         text: modelData
-                        color: "white"
-                        font.family: "JetBrainsMono Nerd Font Propo"
+                        color: Config.colors.text
+                        font.family: Config.fontFamily
                         font.pixelSize: 24
                     }
                 }

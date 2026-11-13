@@ -2,10 +2,14 @@ import QtQuick
 import Quickshell
 import Quickshell.Hyprland
 
+import "../config.js" as Config
+
 Item {
     id: root
     implicitWidth: displayRect.implicitWidth
     implicitHeight: displayRect.implicitHeight
+    property string textColor: Config.SubMaps.default
+    property string icons: ""
 
     // Submap Tracker Logic
     Item {
@@ -22,8 +26,27 @@ Item {
                     
                     if (submapName === "") {
                         submapTracker.activeSubmap = "default";
-                    } else {
+                        root.textColor = Config.SubMaps.default
+                        root.icons = ""
+                    } 
+                    else if(submapName === "quickshellSubMap"){
+                        submapTracker.activeSubmap = "quickshell";
+                        root.textColor = Config.SubMaps.quickshell
+                        root.icons = ""
+                    }
+                    else if(submapName === "codeMenuSubMap"){
+                        submapTracker.activeSubmap = "codeMenu"
+                        root.textColor = Config.SubMaps.Menu
+                        root.icons = ""
+                    }
+                    else if(submapName === "AppLauncherSubMap"){
+                        submapTracker.activeSubmap = "AppLauncher"
+                        root.textColor = Config.SubMaps.appLauncher
+                        root.icons = "󰹯"
+                    }
+                    else {
                         submapTracker.activeSubmap = submapName;
+                        root.textColor = Config.SubMaps.else
                     }
                 }
             }
@@ -34,18 +57,18 @@ Item {
     Rectangle {
         id: displayRect
         implicitWidth: childText.implicitWidth + 20   
-        implicitHeight: childText.implicitHeight
+        implicitHeight: childText.implicitHeight + 7
 
-        color: "#1a1d22"
+        color: Config.colors.fg
         radius: 15 
         
         Text {
             id: childText
             anchors.centerIn: parent
-            text: submapTracker.activeSubmap
-            color: '#87fa89'
+            text: root.icons + " " + submapTracker.activeSubmap
+            color: root.textColor
             font {
-                family: "JetBrainsMono Nerd Font Propo"
+                family: Config.bar.fontFamily
             }
         }
     }

@@ -2,11 +2,13 @@ import QtQuick
 import Quickshell
 import Quickshell.Networking
 
+import "../config.js" as Config
+
 Rectangle {
     id: root
     height: child.implicitHeight + 5
     width: child.implicitWidth + 20
-    color: "#1a1d22"
+    color: Config.colors.fg
     radius: 10
 
     // Storage fields for real-time string values
@@ -37,9 +39,9 @@ Rectangle {
         Text {
             // Displays your contextual signal icon
             text: root.icon
-            color: Networking.wifiEnabled ? '#9704bc' : "#5a4d3e"
+            color: Networking.wifiEnabled ? Config.wifi.iconOk : Config.wifi.iconDis
             font{
-                family: "JetBrainsMono Nerd Font"
+                family: Config.bar.fontFamily
                 pixelSize: 13
             }
         }
@@ -52,9 +54,9 @@ Rectangle {
 
                 return root.active.name
             }
-            color: "#F5E2C5"
+            color: Config.wifi.text
             font{
-                family: "JetBrainsMono Nerd Font"
+                family: Config.bar.fontFamily
                 weight: 500
             }
         }
